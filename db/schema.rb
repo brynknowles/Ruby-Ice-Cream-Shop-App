@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 5) do
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "ice_cream_flavor"
     t.string "cone_type"
     t.integer "number_of_scoops"
+    t.integer "customer_id"
+    t.integer "shop_owner_id"
   end
 
   create_table "shop_owners", force: :cascade do |t|
