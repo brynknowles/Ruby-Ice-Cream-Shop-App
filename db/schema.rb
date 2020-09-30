@@ -10,21 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 9) do
+ActiveRecord::Schema.define(version: 1) do
 
   create_table "customers", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "ice_cream_cones", force: :cascade do |t|
-    t.string "flavor"
-    t.string "cone"
-    t.integer "scoops"
-    t.integer "customer_id"
-    t.integer "shop_id"
-  end
-
-  create_table "ice_cream_shops", force: :cascade do |t|
     t.string "name"
   end
 
