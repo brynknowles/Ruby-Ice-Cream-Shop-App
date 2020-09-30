@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "cone"
     t.integer "scoops"
     t.integer "customer_id"
-    t.integer "shop_id"
+    t.integer "ice_cream_shop_id"
   end
 
   create_table "ice_cream_shops", force: :cascade do |t|
