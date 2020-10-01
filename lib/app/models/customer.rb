@@ -2,8 +2,18 @@ class Customer < ActiveRecord::Base
     has_many :ice_cream_cones
     has_many :ice_cream_shops, through: :ice_cream_cones
 
-    def order_ice_cream_cone(flavor, cone, scoops, shop) #customer orders a new ice cream cone
-        IceCreamCone.create(flavor, cone, scoops, self, shop)
+    def self.login
+        puts "What is your name?"
+        name = gets.chomp
+        customer = Customer.find_by(name: name)
+    end
+
+    def choose_ice_cream_shop
+
+    end
+
+    def order_ice_cream_cone(flavor, cone, scoops, ice_cream_shop) #customer orders a new ice cream cone
+        IceCreamCone.create(flavor, cone, scoops, self, ice_cream_shop)
     end
 
     # def ice_cream_cones #list of ice cream cones ordered by customer
