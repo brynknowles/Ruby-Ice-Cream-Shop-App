@@ -36,10 +36,12 @@ In this app, the user can do the following things:
 3. Run ruby run.rb
 4. Have fun!
 
-## Thank Yous
+## Acknowledgements
 
 I would like to thank all of the people who gave me advice along the way, 
 and helped me work through things. There are too many to list!
+
+I would also like to thank google.com for it's endless supply of knowledge, whether it be succinct and understandable, or the exact opposite.
 
 This app is dedicated to my son, Ari--who loves ice cream cones.
 
