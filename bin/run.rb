@@ -1,9 +1,10 @@
 require_relative '../config/environment'
-require 'pry'
+# require 'pry'
 
+cli = CLI.new
+cli.start
 
-
-puts "HELLO WORLD"
+# puts "HELLO WORLD"
 
 
 
@@ -44,4 +45,4 @@ puts "HELLO WORLD"
 
 
 
-binding.pry
+# binding.pry
