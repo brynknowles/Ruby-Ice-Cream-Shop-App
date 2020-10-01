@@ -19,3 +19,4 @@ cone5 = IceCreamCone.create(flavor: "Celebrate It's Your B-Day", cone: "waffle",
 cone6 = IceCreamCone.create(flavor: "Island Gal", cone: "sugar", scoops: 2, customer: ziggy, ice_cream_shop: creme)
 
 
+

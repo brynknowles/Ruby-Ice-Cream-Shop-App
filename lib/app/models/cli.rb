@@ -3,12 +3,11 @@ require 'pry'
 require "tty-prompt"
 
 class CLI
-
-    prompt = TTY::Prompt.new
-
+    @@prompt = TTY::Prompt.new
     def start
+        # prompt = TTY::Prompt.new
+
         puts "Welcome to The Ice Cream Shop App!"
-        # prompt.ask("What is your name?")  ## tty prompt
         customer = Customer.login
         puts "Hi #{customer.name}! please choose an ice cream shop."
         # customer.choose_ice_cream_shop
@@ -52,17 +51,18 @@ class CLI
         puts "3"
         scoops = gets.chomp
 
-        customer.order_ice_cream_cone(flavor, cone, scoops, self, ice_cream_shop)
-        binding.pry
+        # customer 
+        # binding.pry
     end
 
     def satisfied?
     prompt.yes?("Are you satisfied with your order?")
         # puts "Are you satisfied with your order? (y/n)"
         choice = gets.chomp
-        if choice == yes 
+        if choice == "yes" 
             customer.nice_greeting
         else
+            # ice_cream_cone.last.destroy
             # delete order (is this needed if it hasn't been created yet? probably not)
             puts "Please start a new order."
             menu_ample(customer) # should direct the customer back to building the cone

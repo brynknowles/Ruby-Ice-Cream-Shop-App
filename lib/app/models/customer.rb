@@ -1,22 +1,32 @@
 class Customer < ActiveRecord::Base
     has_many :ice_cream_cones
     has_many :ice_cream_shops, through: :ice_cream_cones
-
+    @@prompt 
     def self.login
-        puts "What is your name?"
+        prompt = TTY::Prompt.new
+        prompt.ask("What is your name?")
         name = gets.chomp
-        customer = Customer.find_by(name: name)
+        customer = Customer.find_or_create_by(name: name)
     end
 
-    def choose_ice_cream_shop
+    def choose_ice_cream_shop 
+        ## allows a customer to choose an ice cream shop, 
+        ## and then stores that data for when they create an ice cream cone
 
     end
 
-    def order_ice_cream_cone(flavor, cone, scoops, ice_cream_shop) #customer orders a new ice cream cone
+    def order_ice_cream_cone(flavor, cone, scoops, ice_cream_shop) ## creates a new ice cream cone instance when a customer puts in an order
         IceCreamCone.create(flavor, cone, scoops, self, ice_cream_shop)
     end
 
-    # def ice_cream_cones #list of ice cream cones ordered by customer
+    def ice_cream_cones
+        IceCreamCone.all.select { |ice_cream_cone| ice_cream_cone.customer == self}  #list of ice cream cones ordered by customer
+    end
+
+    def ice_cream_shops ## needs an ice_cream_cones method first
+        self.ice_cream_cones.map { |ice_cream_cone| ice_cream_cone.ice_cream_shop}.uniq
+    end
+
 
     # def favorite_ice_cream_shop  #customer's most frequently visited shop
     # end
@@ -24,15 +34,4 @@ class Customer < ActiveRecord::Base
     # def favorite_ice_cream_cone #customer's most purchased ice cream cone
     # end
 
-    # def self.find_by_location(location) #finds ice cream shop by location
-    # end
-
-    # def choose_flavor
-    # end
-
-    # def choose_cone
-    # end
-
-    # def choose_num_of_scoops
-    # end
 end
