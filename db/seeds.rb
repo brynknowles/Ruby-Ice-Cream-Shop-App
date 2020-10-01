@@ -7,8 +7,8 @@ mojo = Customer.create(name: "Mojo")
 thor = Customer.create(name: "Thor")
 ava = Customer.create(name: "Ava")
 
-ample = IceCreamShop.create(name: "Ample Hills Creamery", location: "Prospect Heights, Brooklyn")
-creme = IceCreamShop.create(name: "Creme And Cocoa", location: "Prospect-Lefferts Gardens, Brooklyn")
+ample = IceCreamShop.create(name: "Ample Hills Creamery")
+creme = IceCreamShop.create(name: "Creme And Cocoa")
 
 
 cone1 = IceCreamCone.create(flavor: "Strawberries & Cream", cone: "cake", scoops: 1, customer: ava, ice_cream_shop: ample)

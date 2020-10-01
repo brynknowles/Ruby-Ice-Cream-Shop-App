@@ -3,33 +3,33 @@ require 'pry'
 require "tty-prompt"
 
 class CLI
+
     @@prompt = TTY::Prompt.new
+
     def start
-        # prompt = TTY::Prompt.new
-
         puts "Welcome to The Ice Cream Shop App!"
+
         customer = Customer.login
+
         puts "Hi #{customer.name}! please choose an ice cream shop."
-        # customer.choose_ice_cream_shop
-        puts "1. Ample Hills Cremery"
-        puts "2. Creme And Cocoa"
-        choice = gets.chomp
+        customer.choose_ice_cream_shop
 
-        if choice == "1"
-            puts "Okay #{customer.name}, it's time to build your ice cream cone!"
-            puts "Let's take a look at a menu."
-            self.menu_ample(customer)
-        end
+        # if choice == "1"
+        #     puts "Okay #{customer.name}, it's time to build your ice cream cone!"
+        #     puts "Let's take a look at a menu."
+        #     self.menu_ample(customer, ice_cream_shop)
+        # end
 
-        if choice == "2"
-            puts "Okay #{customer.name}, it's time to build your ice cream cone!"
-            puts "Let's take a look at a menu."
-            self.menu_creme(customer)
-        end
+        # if choice == "2"
+        #     puts "Okay #{customer.name}, it's time to build your ice cream cone!"
+        #     puts "Let's take a look at a menu."
+        #     self.menu_creme(customer, ice_cream_shop: name)
+        # end
         binding.pry
     end
 
     def menu_ample(customer, ice_cream_shop)
+        puts "Thanks for choosing Ample "
 
         puts "#{customer.name}, please choose your ice cream flavor"
         puts "1. Strawberries & Cream"

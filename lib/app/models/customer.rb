@@ -1,18 +1,30 @@
 class Customer < ActiveRecord::Base
     has_many :ice_cream_cones
     has_many :ice_cream_shops, through: :ice_cream_cones
-    @@prompt 
+
+    @@prompt = TTY::Prompt.new
+
     def self.login
-        prompt = TTY::Prompt.new
-        prompt.ask("What is your name?")
-        name = gets.chomp
-        customer = Customer.find_or_create_by(name: name)
+        puts "Please sign in."
+        name = @@prompt.ask("What is your name?")
+        Customer.find_or_create_by(name: name)
+        # puts "What's your name?"
+        # name = gets.chomp
+        # customer = Customer.find_or_create_by(name: name)
     end
 
-    def choose_ice_cream_shop 
+    def choose_ice_cream_shop
+        option = @@prompt.select("option?", %w(1 2))
+        if option == 1
+            IceCreamShop.find_or_create_by(name: name)
+            puts "Welcome to Ample Hills Cremery!"
+        elsif option == 2
+            IceCreamShop.find_or_create_by(name: name)
+            puts "Welcome to Creme And Cocoa!"
+        end
+        # choice = gets.chomp 
         ## allows a customer to choose an ice cream shop, 
         ## and then stores that data for when they create an ice cream cone
-
     end
 
     def order_ice_cream_cone(flavor, cone, scoops, ice_cream_shop) ## creates a new ice cream cone instance when a customer puts in an order
