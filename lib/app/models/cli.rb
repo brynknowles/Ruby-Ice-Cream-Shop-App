@@ -11,7 +11,8 @@ class CLI
         ## login
         # puts "Welcome to The Ice Cream Shop App!"
         print TTY::Box.frame "Welcome to The Ice Cream Shop App!"
-        puts "Please sign in."
+
+        puts " "
         name = @@prompt.ask("What is your name?")
         customer = Customer.find_or_create_by(name: name)
 
@@ -65,7 +66,7 @@ class CLI
         end
         # ice_cream_cone = IceCreamCone.find_or_create_by(flavor: flavor, cone: cone, scoops: scoops, customer: self, ice_cream_shop: ice_cream_shop)
         puts " "
-        puts "You ordered the following: #{choice3} scoop(s) of #{choice1} flavored ice cream on a #{choice2} cone."
+        print TTY::Box.frame "You ordered the following: #{choice3} scoop(s) of #{choice1} flavored ice cream on a #{choice2} cone."
         self.satisfied?
     end
 
@@ -95,7 +96,7 @@ class CLI
         # ice_cream_cone = IceCreamCone.find_or_create_by(flavor: flavor, cone: cone, scoops: scoops, customer: self, ice_cream_shop: ice_cream_shop)
         # puts "#{customer.name}, your order is #{ice_cream_cone}"
         puts " "
-        puts "You ordered the following: #{choice3} scoop(s) of #{choice1} flavored ice cream on a #{choice2} cone."
+        print TTY::Box.frame "You ordered the following: #{choice3} scoop(s) of #{choice1} flavored ice cream on a #{choice2} cone."
         self.satisfied?
     end
 
