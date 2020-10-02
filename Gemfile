@@ -8,3 +8,4 @@ gem "rspec"
 gem "rake"
 gem "tty-prompt"
 gem 'colorize', '~> 0.8.1'
+gem "tty-box"
