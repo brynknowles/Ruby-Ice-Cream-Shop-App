@@ -1,4 +1,4 @@
-# require_relative '../config/environment'
+require_all 'lib'
 require 'pry'
 require "tty-prompt"
 
@@ -7,116 +7,102 @@ class CLI
     @@prompt = TTY::Prompt.new
 
     def start
+        ## login
         puts "Welcome to The Ice Cream Shop App!"
+        puts "Please sign in."
+        name = @@prompt.ask("What is your name?")
+        customer = Customer.find_or_create_by(name: name)
 
-        customer = Customer.login
+        ## choose_shop
+        puts "Hi #{customer.name}!"
+        choice = @@prompt.select("Please choose ice cream shop") do |menu|
+            menu.choice "Ample Hills Creamery", 1
+            menu.choice "Creme And Cocoa", 2
+        end
 
-        puts "Hi #{customer.name}! please choose an ice cream shop."
-        customer.choose_ice_cream_shop
-
-        # if choice == "1"
-        #     puts "Okay #{customer.name}, it's time to build your ice cream cone!"
-        #     puts "Let's take a look at a menu."
-        #     self.menu_ample(customer, ice_cream_shop)
-        # end
-
-        # if choice == "2"
-        #     puts "Okay #{customer.name}, it's time to build your ice cream cone!"
-        #     puts "Let's take a look at a menu."
-        #     self.menu_creme(customer, ice_cream_shop: name)
-        # end
-        binding.pry
-    end
-
-    def menu_ample(customer, ice_cream_shop)
-        puts "Thanks for choosing Ample "
-
-        puts "#{customer.name}, please choose your ice cream flavor"
-        puts "1. Strawberries & Cream"
-        puts "2. Chocolate"
-        puts "3. Vanilla"
-        puts "4. Mango Sorbet"
-        flavor = gets.chomp
-        
-        puts "#{customer.name}, please choose your cone type"
-        puts "1. Cake Cone"
-        puts "2. Sugar Cone"
-        puts "3. Waffel Cone"
-        cone = gets.chomp
-
-
-        puts "#{customer.name}, how many scoops would you like?"
-        puts "1"
-        puts "2"
-        puts "3"
-        scoops = gets.chomp
-
-        # customer 
-        # binding.pry
-    end
-
-    def satisfied?
-    prompt.yes?("Are you satisfied with your order?")
-        # puts "Are you satisfied with your order? (y/n)"
-        choice = gets.chomp
-        if choice == "yes" 
-            customer.nice_greeting
-        else
-            # ice_cream_cone.last.destroy
-            # delete order (is this needed if it hasn't been created yet? probably not)
-            puts "Please start a new order."
-            menu_ample(customer) # should direct the customer back to building the cone
+        if choice == 1
+            # ice_cream_shop << IceCreamShop.find_or_create_by(name: "Ample Hills Creamery")
+            puts "Welcome to Ample Hills Creamery!"
+            # @@prompt.keypress("Press any key to return")
+            self.menu1
+        elsif choice == 2
+            # ice_cream_shop = IceCreamShop.find_or_create_by(name: name)
+            puts "Welcome to Creme And Cocoa!"
+            self.menu2
         end
     end
 
-    ### Work on this after figuring out ample hills ###
+    ## ample_menu
+    def menu1
+        puts "Let's build your ice cream cone."
 
-    # def menu_creme(customer)  
+        choice = @@prompt.select("Please choose your flavor") do |menu|
+            menu.choice "Strawberries & Cream", 1
+            menu.choice "Chocolate", 2
+            menu.choice "Vanilla", 3
+            menu.choice "Mango Sorbet", 4
+        end
 
-    #     puts "#{customer.name}, please choose your ice cream flavor"
-    #     puts "1. Island Gal"
-    #     puts "2. Chocolate"
-    #     puts "3. Vanilla"
-    #     puts "4. Banana Sorbet"
-    #     flavor = gets.chomp
-        
-    #     puts "#{customer.name}, please choose your cone type"
-    #     puts "1. Cake Cone"
-    #     puts "2. Sugar Cone"
-    #     puts "3. Waffel Cone"
-    #     cone = gets.chomp
+        choice = @@prompt.select("Please choose your cone") do |menu|
+            menu.choice "Cake", 1
+            menu.choice "Sugar", 2
+            menu.choice "Waffle", 3
+        end
 
+        choice = @@prompt.select("Please choose the number of scoops") do |menu|
+            menu.choice 1, 1
+            menu.choice 2, 2
+            menu.choice 3, 3
+        end
+        # ice_cream_cone = IceCreamCone.find_or_create_by(flavor: flavor, cone: cone, scoops: scoops, customer: self, ice_cream_shop: ice_cream_shop)
+        self.satisfied?
+    end
 
-    #     puts "#{customer.name}, how many scoops would you like?"
-    #     puts "1"
-    #     puts "2"
-    #     puts "3"
-    #     scoops = gets.chomp
+    ## creme_menu
+    def menu2
+        puts "Let's build your ice cream cone."
 
-    #     puts "Are you satisfied with your order? y/n"
-    #     choice = gets.chomp
-    #     if choice == y 
-    #         customer.order_ice_cream_cone(flavor, cone, scoops)
-    #         customer.nice_greeting
-    #     else
-    #         # delete order (is this needed if it hasn't been created yet? probably not)
-    #         puts "Please start a new order."
-    #         menu_creme(customer) # should direct the customer back to building the cone
-    #     end
-    # end
+        choice = @@prompt.select("Please choose your flavor") do |menu|
+            menu.choice "Island Gal", 1
+            menu.choice "Chocolate", 2
+            menu.choice "Vanilla", 3
+            menu.choice "Banana Sorbet", 4
+        end
 
-    def nice_greeting
-        puts "Here's your ice cream cone" #show the ice cream cone that was built by customer
+        choice = @@prompt.select("Please choose your cone") do |menu|
+            menu.choice "Cake", 1
+            menu.choice "Sugar", 2
+            menu.choice "Waffle", 3
+        end
+
+        choice = @@prompt.select("Please choose the number of scoops") do |menu|
+            menu.choice 1, 1
+            menu.choice 2, 2
+            menu.choice 3, 3
+        end
+        # ice_cream_cone = IceCreamCone.find_or_create_by(flavor: flavor, cone: cone, scoops: scoops, customer: self, ice_cream_shop: ice_cream_shop)
+        # puts "#{customer.name}, your order is #{ice_cream_cone}"
+        self.satisfied?
+    end
+
+    def satisfied?
+        @@prompt.yes?("Are you satisfied with your order?")
+        if "yes"
+            puts "Thank you for your order. Have a great day!"
+        else
+            # ice_cream_cone.last.destroy
+            puts "We're sorry. Please start a new order."
+            self.menu1 # should direct the customer back to building the cone
+        end
+    end
+
+    def nice_greeting(customer)
+        puts "Here's your ice cream cone" #show the ice cream cone that was built by customer?
         puts "Thank you for your order, #{customer.name}. Have a great day!"
     end
 
+    ## SHELVE THIS METHOD -- too complex for now
     # def ice_cream_mishap
     # end
 
 end
-
-
-
-
-
-# binding.pry

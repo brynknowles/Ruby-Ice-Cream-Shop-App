@@ -10,7 +10,7 @@ class IceCreamShop < ActiveRecord::Base
         self.ice_cream_cones.map { |ice_cream_cone| ice_cream_cone.customer}.uniq
     end
 
-    ### SHELVE THIS METHOD
+    ### SHELVE THIS METHOD -- I removed the location column in the corresponding table
     # def self.find_by_location(location)  ## finds an ice cream shop by location -- returns the first one that matches the location called
     #     self.all.find { |ice_cream_shop| ice_cream_shop.location == location}
     # end
