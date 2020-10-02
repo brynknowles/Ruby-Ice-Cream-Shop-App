@@ -86,8 +86,10 @@ class CLI
     end
 
     def satisfied?
-        @@prompt.yes?("Are you satisfied with your order?")
-        if "yes"
+        input = @@prompt.yes?("Are you satisfied with your order?")
+        # puts "Are you satisfied with your order? y/n"
+        # input = gets.chomp
+        if input == "y"
             puts "Thank you for your order. Have a great day!"
         else
             # ice_cream_cone.last.destroy
