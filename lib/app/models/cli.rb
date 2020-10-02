@@ -35,26 +35,27 @@ class CLI
     ## ample_menu
     def menu1
         puts "Let's build your ice cream cone."
-
-        choice = @@prompt.select("Please choose your flavor") do |menu|
-            menu.choice "Strawberries & Cream", 1
-            menu.choice "Chocolate", 2
-            menu.choice "Vanilla", 3
-            menu.choice "Mango Sorbet", 4
+        ice_cream_cone = []
+        choice1 = @@prompt.select("Please choose your flavor") do |menu|
+            menu.choice "Strawberries & Cream"
+            menu.choice "Chocolate"
+            menu.choice "Vanilla"
+            menu.choice "Mango Sorbet"
         end
 
-        choice = @@prompt.select("Please choose your cone") do |menu|
-            menu.choice "Cake", 1
-            menu.choice "Sugar", 2
-            menu.choice "Waffle", 3
+        choice2 = @@prompt.select("Please choose your cone") do |menu|
+            menu.choice "cake"
+            menu.choice "sugar"
+            menu.choice "waffle"
         end
 
-        choice = @@prompt.select("Please choose the number of scoops") do |menu|
-            menu.choice 1, 1
-            menu.choice 2, 2
-            menu.choice 3, 3
+        choice3 = @@prompt.select("Please choose the number of scoops") do |menu|
+            menu.choice 1
+            menu.choice 2
+            menu.choice 3
         end
         # ice_cream_cone = IceCreamCone.find_or_create_by(flavor: flavor, cone: cone, scoops: scoops, customer: self, ice_cream_shop: ice_cream_shop)
+        puts "You ordered the following: #{choice3} scoop(s) of #{choice1} flavored ice cream on a #{choice2} cone."
         self.satisfied?
     end
 
@@ -62,26 +63,27 @@ class CLI
     def menu2
         puts "Let's build your ice cream cone."
 
-        choice = @@prompt.select("Please choose your flavor") do |menu|
-            menu.choice "Island Gal", 1
-            menu.choice "Chocolate", 2
-            menu.choice "Vanilla", 3
-            menu.choice "Banana Sorbet", 4
+        choice1 = @@prompt.select("Please choose your flavor") do |menu|
+            menu.choice "Cookies N Creme"
+            menu.choice "Chocolate"
+            menu.choice "Vanilla"
+            menu.choice "Banana Sorbet"
         end
 
-        choice = @@prompt.select("Please choose your cone") do |menu|
-            menu.choice "Cake", 1
-            menu.choice "Sugar", 2
-            menu.choice "Waffle", 3
+        choice2 = @@prompt.select("Please choose your cone") do |menu|
+            menu.choice "cake"
+            menu.choice "sugar"
+            menu.choice "waffle"
         end
 
-        choice = @@prompt.select("Please choose the number of scoops") do |menu|
-            menu.choice 1, 1
-            menu.choice 2, 2
-            menu.choice 3, 3
+        choice3 = @@prompt.select("Please choose the number of scoops") do |menu|
+            menu.choice 1
+            menu.choice 2
+            menu.choice 3
         end
         # ice_cream_cone = IceCreamCone.find_or_create_by(flavor: flavor, cone: cone, scoops: scoops, customer: self, ice_cream_shop: ice_cream_shop)
         # puts "#{customer.name}, your order is #{ice_cream_cone}"
+        puts "You ordered the following: #{choice3} scoop(s) of #{choice1} flavored ice cream on a #{choice2} cone."
         self.satisfied?
     end
 
@@ -89,7 +91,7 @@ class CLI
         input = @@prompt.yes?("Are you satisfied with your order?")
         # puts "Are you satisfied with your order? y/n"
         # input = gets.chomp
-        if input == "y"
+        if input == true
             puts "Thank you for your order. Have a great day!"
         else
             # ice_cream_cone.last.destroy
