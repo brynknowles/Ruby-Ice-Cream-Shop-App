@@ -14,7 +14,7 @@ In this app, the user can do the following things:
    - cone type
    - number of scoops
 4. If you are unsatisfied with your order,
-   you start overcan order a new cone.
+   you can start over and order a new cone.
    
 5. Once you have completed your order, 
    you will receive a nice message from the shop owner.
