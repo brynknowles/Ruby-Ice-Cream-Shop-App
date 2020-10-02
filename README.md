@@ -28,6 +28,8 @@ In this app, the user can do the following things:
    
 2. If what you have ordered is out of stock, you will have the ability
    to make a new order.
+   
+For my son's sake, I'd like to add some flashy heavily pixelated graphics and old-fashioned arcade music!
 
 ## Instructions For Using This App
 
@@ -39,7 +41,7 @@ In this app, the user can do the following things:
 ## Acknowledgements
 
 I would like to thank all of the people who gave me advice along the way, 
-and helped me work through things. There are too many to list!
+and helped me work through things. That includes many of the students, as well as teachers in my cohort. THANK YOU ALL.
 
 I would also like to thank google.com for it's endless supply of knowledge, whether it be succinct and understandable, or the exact opposite.
 
