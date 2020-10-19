@@ -35,7 +35,7 @@ For my son's sake, I'd like to add some flashy heavily pixelated graphics and ol
 
 1. In your terminal, clone the github repo of this app.
 2. Change directory to the project directory.
-3. Run ruby run.rb
+3. Run ruby bin/run.rb
 4. Have fun!
 
 ## Acknowledgements
