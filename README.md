@@ -45,5 +45,5 @@ and helped me work through things. That includes many of the students, as well a
 
 I would also like to thank google.com for it's endless supply of knowledge, whether it be succinct and understandable, or the exact opposite.
 
-This app is dedicated to my son, Ari--who loves ice cream cones.
+This app is dedicated to my Pa--who never stopped believing in me, and to my son Ari--who loves ice cream cones.
 

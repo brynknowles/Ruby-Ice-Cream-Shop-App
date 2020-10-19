@@ -1,6 +1,7 @@
 require_all 'lib'
 require 'pry'
 require "tty-prompt"
+require "tty-box"
 
 class CLI
 
@@ -24,7 +25,7 @@ class CLI
             menu.choice "Ample Hills Creamery", 1
             menu.choice "Creme And Cocoa", 2
         end
-
+        puts " "
         if choice == 1
             # ice_cream_shop << IceCreamShop.find_or_create_by(name: "Ample Hills Creamery")
             puts ""
@@ -104,6 +105,7 @@ class CLI
     end
 
     def satisfied?
+        puts " "
         input = @@prompt.yes?("Are you satisfied with your order?")
         # puts "Are you satisfied with your order? y/n"
         # input = gets.chomp
@@ -120,7 +122,7 @@ class CLI
         end
     end
 
-    def nice_greeting(customer)
+    def nice_greeting(customer)  ## still working on this method
         puts "Here's your ice cream cone" #show the ice cream cone that was built by customer?
         puts "<% <% <%  Thank you for your order, #{customer.name}. Have a great day!  %> %> %>"
         puts ""
